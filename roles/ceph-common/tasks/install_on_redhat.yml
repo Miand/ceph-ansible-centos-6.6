@@ -9,6 +9,8 @@
     - hdparm
     - yum-plugin-priorities.noarch
     - epel-release
+    - libselinux-python
+    - python-jinja2
 
 - name: install the Ceph stable repository key
   rpm_key: >

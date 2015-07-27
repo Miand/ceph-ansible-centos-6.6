@@ -8,20 +8,20 @@
     radosgw_frontend == 'apache' and not
     ceph_containerized_deployment
 
-- include: install_debian.yml
-  when:
-    ansible_os_family == 'Debian' and
-    radosgw_frontend == 'apache' and not
-    ceph_containerized_deployment
+#- include: install_debian.yml
+#  when:
+#    ansible_os_family == 'Debian' and
+#    radosgw_frontend == 'apache' and not
+#    ceph_containerized_deployment
 
-- name: install rados gateway
-  apt: >
-    pkg=radosgw
-    state=present
-    update_cache=yes
-  when:
-    ansible_os_family == 'Debian' and not
-    ceph_containerized_deployment
+#- name: install rados gateway
+#  apt: >
+#    pkg=radosgw
+#    state=present
+#    update_cache=yes
+#  when:
+#    ansible_os_family == 'Debian' and not
+#    ceph_containerized_deployment
 
 - name: install rados gateway
   yum: >

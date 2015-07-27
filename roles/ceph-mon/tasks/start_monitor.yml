@@ -1,24 +1,24 @@
 ---
-- name: activate monitor with upstart
-  file: >
-    path=/var/lib/ceph/mon/ceph-{{ ansible_hostname }}/{{ item }}
-    state=touch
-    owner=root
-    group=root
-    mode=0600
-  with_items:
-    - done
-    - upstart
-  when: ansible_distribution == "Ubuntu"
-  changed_when: false
+#- name: activate monitor with upstart
+#  file: >
+#    path=/var/lib/ceph/mon/ceph-{{ ansible_hostname }}/{{ item }}
+#    state=touch
+#    owner=root
+#    group=root
+#    mode=0600
+#  with_items:
+#    - done
+#    - upstart
+#  when: ansible_distribution == "Ubuntu"
+#  changed_when: false
 
-- name: start and add that the monitor service to the init sequence (Ubuntu)
-  service: >
-    name=ceph-mon
-    state=started
-    enabled=yes
-    args="id={{ ansible_hostname }}"
-  when: ansible_distribution == "Ubuntu"
+#- name: start and add that the monitor service to the init sequence (Ubuntu)
+#  service: >
+#    name=ceph-mon
+#    state=started
+#    enabled=yes
+#    args="id={{ ansible_hostname }}"
+#  when: ansible_distribution == "Ubuntu"
 
 # NOTE (leseb): somehow the service ansible module is messing things up
 # as a safety measure we run the raw command

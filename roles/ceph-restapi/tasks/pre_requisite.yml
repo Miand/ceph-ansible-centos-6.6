@@ -16,18 +16,18 @@
     mode=600
   when: cephx
 
-- name: activate Ceph REST API with upstart
-  file: >
-    path=/var/lib/ceph/restapi/{{ item }}
-    state=touch
-    owner=root
-    group=root
-    mode=0600
-  with_items:
-    - done
-    - upstart
-  changed_when: false
-  when: ansible_distribution == "Ubuntu"
+#- name: activate Ceph REST API with upstart
+#  file: >
+#    path=/var/lib/ceph/restapi/{{ item }}
+#    state=touch
+#    owner=root
+#    group=root
+#    mode=0600
+#  with_items:
+#    - done
+#    - upstart
+#  changed_when: false
+#  when: ansible_distribution == "Ubuntu"
 
 - name: activate Ceph REST API with sysvinit
   file: >

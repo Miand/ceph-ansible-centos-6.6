@@ -12,8 +12,9 @@
 - name: add special fastcgi repository
   command: rpm -ivh http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el6.rf.x86_64.rpm
   changed_when: false
+  ignore_errors: true
 
-- name: install apache and fastcgi
+- name: install apache and fastcgi, mod_proxy_fcgi and boto (for S3 Api)
   yum: >
     name={{ item }}
     state=present
@@ -21,11 +22,21 @@
     - httpd
     - mod_fastcgi
     - mod_fcgid
+    - mod_proxy_fcgi
+    - python-boto
 
 - name: install rados gateway vhost
   template: >
     src=rgw.conf
     dest=/etc/httpd/conf.d/rgw.conf
+    owner=root
+    group=root
+
+- name: install fastcgi.conf with fastcgiwrapper disabled
+  template: >
+    src=fastcgi.conf
+    dest=/etc/httpd/conf.d/fastcgi.conf
+    mode=0644
     owner=root
     group=root
 

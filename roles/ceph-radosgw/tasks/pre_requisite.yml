@@ -34,18 +34,18 @@
     group=root
   when: cephx
 
-- name: activate rados gateway with upstart
-  file: >
-    path=/var/lib/ceph/radosgw/ceph-rgw.{{ ansible_hostname }}/{{ item }}
-    state=touch
-    owner=root
-    group=root
-    mode=0644
-  with_items:
-    - done
-    - upstart
-  changed_when: false
-  when: ansible_distribution == "Ubuntu"
+#- name: activate rados gateway with upstart
+#  file: >
+#    path=/var/lib/ceph/radosgw/ceph-rgw.{{ ansible_hostname }}/{{ item }}
+#    state=touch
+#    owner=root
+#    group=root
+#    mode=0644
+#  with_items:
+#    - done
+#    - upstart
+#  changed_when: false
+#  when: ansible_distribution == "Ubuntu"
 
 - name: activate rados gateway with sysvinit
   file: >

@@ -3,6 +3,9 @@
 
 - include: check_mandatory_vars.yml
 
+- include: install_on_redhat.yml
+  when: ansible_os_family == 'RedHat'
+
 - include: os_tuning.yml
   when: osd_group_name in group_names
 
@@ -19,11 +22,8 @@
     ceph_stable_rh_storage and
     ceph_stable_rh_storage_cdn_install
 
-- include: install_on_redhat.yml
-  when: ansible_os_family == 'RedHat'
-
-- include: install_on_debian.yml
-  when: ansible_os_family == 'Debian'
+#- include: install_on_debian.yml
+#  when: ansible_os_family == 'Debian'
 
 - name: check for a Ceph socket
   shell: "stat /var/run/ceph/*.asok > /dev/null 2>&1"
@@ -61,13 +61,13 @@
     mode=0644
   notify:
     - restart ceph mons
-    - restart ceph mons on ubuntu
+#    - restart ceph mons on ubuntu
     - restart ceph osds
-    - restart ceph osds on ubuntu
+#    - restart ceph osds on ubuntu
     - restart ceph mdss
-    - restart ceph mdss on ubuntu
+#    - restart ceph mdss on ubuntu
     - restart ceph rgws
-    - restart ceph rgws on ubuntu
+#    - restart ceph rgws on ubuntu
     - restart ceph rgws on red hat
 
 - name: create rbd client directory

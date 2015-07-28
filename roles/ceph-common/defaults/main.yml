@@ -28,7 +28,7 @@ ceph_stable_release: hammer # ceph stable release
 
 # This option is needed for _both_ stable and dev version, so please always fill the right version
 # # for supported distros, see http://ceph.com/rpm-{{ ceph_stable_release }}/
-ceph_stable_redhat_distro: el7
+ceph_stable_redhat_distro: el6
 
 # ENTERPRISE VERSION ICE (old, prior to the 1.3)
 ceph_stable_ice: false # use Inktank Ceph Enterprise
@@ -70,7 +70,7 @@ ceph_dev_branch: master # development branch you would like to use e.g: master, 
 # supported distros are centos6, centos7, fc17, fc18, fc19, fc20, fedora17, fedora18,
 # fedora19, fedora20, opensuse12, sles0. (see http://gitbuilder.ceph.com/).
 # For rhel, please pay attention to the versions: 'rhel6 3' or 'rhel 4', the fullname is _very_ important.
-ceph_dev_redhat_distro: centos7
+ceph_dev_redhat_distro: centos6
 
 
 ######################
@@ -169,7 +169,7 @@ osd_deep_scrub_stride: 1048576
 ## Rados Gateway options
 #
 #radosgw_dns_name: your.subdomain.tld # subdomains used by radosgw. See http://ceph.com/docs/master/radosgw/config/#enabling-subdomain-s3-calls
-radosgw_frontend: civetweb # supported options are 'apache' or 'civetweb', also edit roles/ceph-radosgw/defaults/main.yml
+radosgw_frontend: apache # supported options are 'apache' or 'civetweb', also edit roles/ceph-radosgw/defaults/main.yml
 radosgw_civetweb_port: 80
 radosgw_keystone: false # activate OpenStack Keystone options full detail here: http://ceph.com/docs/master/radosgw/keystone/
 #radosgw_keystone_url: # url:admin_port ie: http://192.168.0.1:35357
